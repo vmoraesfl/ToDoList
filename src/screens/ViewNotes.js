@@ -6,6 +6,7 @@ import { Creators as TodoActions } from "../store/ducks/todos";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Counter from "../component/Counter";
 
 function ViewNotes(props) {
   const navigation = props.navigation;
@@ -18,6 +19,7 @@ function ViewNotes(props) {
   return (
     <View style={{ flex: 1 }}>
       <Header titleText="Simple Notes" />
+      <Counter />
       <View style={styles.container}>
         {props.todos.length === 0 ? (
           <View style={styles.titleContainer}>
