@@ -11,7 +11,7 @@ function LoginScreen() {
       <TextView style={styles.login} h1>
         Login
       </TextView>
-      <View style={{ paddingBottom: 20 }}>
+      <View style={styles.title}>
         <TextView style={styles.title}>Nome de Usuário</TextView>
         <TextInput
           label="Username"
@@ -25,7 +25,6 @@ function LoginScreen() {
       </View>
       <View>
         <TextView style={styles.title}>Senha</TextView>
-
         <TextInput
           secureTextEntry={true}
           label="Password"
@@ -42,7 +41,7 @@ function LoginScreen() {
           style={{ fontWeight: "600" }}
           color="white"
           size={20}
-          padding={10}
+          padding={15}
           center
         >
           Enter
@@ -76,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   text: {
-    paddingBottom: 20,
+    paddingBottom: 30,
   },
   fabLogin: {
     backgroundColor: "blue",
