@@ -20,11 +20,11 @@ class TodoList extends Component {
   };
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, padding: 20 }}>
         <View style={{ flex: 1 }}></View>
         <View style={{ flex: 1 }}>
           <TextInput
-            style={{ fontSize: 20 }}
+            style={{ fontSize: 20, alignSelf: "center" }}
             placeholder="exemplo@provedor.com"
             value={this.state.newtodo}
             onChangeText={(newtodo) => this.setState({ newtodo })}
@@ -45,13 +45,15 @@ class TodoList extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  backgroundColor: "blue",
+                  backgroundColor: "white",
+                  alignItems: "center",
                 }}
               >
                 <Text
                   style={{
+                    fontSize: 20,
                     flex: 1,
-
+                    alignSelf: "center",
                     textAlign: "center",
                     backgroundColor: "white",
                   }}
@@ -62,16 +64,6 @@ class TodoList extends Component {
                 >
                   {todo.item.complete ? "completed" : todo.item.text}
                 </Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.props.removeTodo(todo.item.id);
-                  }}
-                >
-                  <Image
-                    style={styles.button}
-                    source={require("../assets/dumpster.png")}
-                  />
-                </TouchableOpacity>
                 <Button
                   title="toggle"
                   onPress={() => {
@@ -79,6 +71,16 @@ class TodoList extends Component {
                     console.log(this.props.todos);
                   }}
                 />
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.removeTodo(todo.item.id);
+                  }}
+                >
+                  <Image
+                    style={styles.button}
+                    source={require("../assets/close.png")}
+                  />
+                </TouchableOpacity>
               </View>
             )}
           />
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
-    padding: 20,
+    alignSelf: "center",
+    backgroundColor: "#fff",
   },
 });
