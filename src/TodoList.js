@@ -32,11 +32,12 @@ class TodoList extends Component {
             autoCorrect={false}
           />
           <Button
-            color="orange"
+            color="black"
             title="Add New Goal"
             onPress={() => {
               this.props.addTodo(this.state.newtodo);
               this.setState({ newtodo: null });
+              //    console.log(this.props.store.state);
             }}
           />
           <FlatList

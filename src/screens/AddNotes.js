@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
+import { Creators as TodoActions } from "../store/ducks/todos";
+
 import { Text, FAB, IconButton, TextInput } from "react-native-paper";
 import Header from "../component/Header";
+//import store from "../store";
 
-function AddNotes({ navigation }) {
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+
+function AddNotes(props) {
+  const navigation = props.navigation;
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
   function onSaveNote() {
@@ -45,7 +52,12 @@ function AddNotes({ navigation }) {
           style={styles.fab}
           icon="check"
           disable={noteTitle == "" ? true : false}
-          onPress={() => onSaveNote()}
+          onPress={() => {
+            //onSaveNote();
+            props.addTodo(noteTitle, noteDescription);
+            console.log(props.todos);
+            navigation.goBack();
+          }}
         />
       </View>
     </View>
@@ -81,4 +93,11 @@ const styles = StyleSheet.create({
   fab: { position: "absolute", margin: 20, right: 0, bottom: 0 },
 });
 
-export default AddNotes;
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(TodoActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNotes);

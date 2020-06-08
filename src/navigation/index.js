@@ -16,8 +16,8 @@ const StackNavigator = createStackNavigator({
     screen: HomeTodo,
   },
   initialRouteName: "ViewNotes",
-  headerMode: "none",
   mode: "modal",
+  headerShown: "false",
 });
 
 export default createAppContainer(StackNavigator);

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
-import { Text, FAB, List } from "react-native-paper";
+import { Text, FAB, List, Button } from "react-native-paper";
 import Header from "../component/Header";
+import { Creators as TodoActions } from "../store/ducks/todos";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-function ViewNotes({ navigation }) {
+function ViewNotes(props) {
+  const navigation = props.navigation;
   const [notes, setNotes] = useState([]);
 
   const addNotes = (note) => {
@@ -14,19 +19,26 @@ function ViewNotes({ navigation }) {
     <View style={{ flex: 1 }}>
       <Header titleText="Simple Notes" />
       <View style={styles.container}>
-        {notes.length === 0 ? (
+        {props.todos.length === 0 ? (
           <View style={styles.titleContainer}>
             <Text style={styles.title}>You don't have any notes</Text>
           </View>
         ) : (
           <FlatList
-            data={notes}
+            data={props.todos}
             renderItem={({ item }) => (
               <List.Item
-                title={item.noteTitle}
-                description={item.noteDescription}
+                title={item.text}
+                description={item.description}
                 descriptionNumberOfLines={1}
                 titleStyle={styles.listTittle}
+                right={(itemProps) => (
+                  <>
+                    <TouchableOpacity onPress={() => props.removeTodo(item.id)}>
+                      <List.Icon {...itemProps} icon="close" />
+                    </TouchableOpacity>
+                  </>
+                )}
               />
             )}
             keyExtractor={(item) => item.id.toString()}
@@ -80,4 +92,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ViewNotes;
+const mapStateToProps = (state) => ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(TodoActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewNotes);
