@@ -4,6 +4,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import ViewNotes from "../screens/ViewNotes";
 import AddNotes from "../screens/AddNotes";
 import HomeTodo from "../screens/HomeTodo";
+import LoginScreen from "../screens/LoginScreen";
 
 const StackNavigator = createStackNavigator({
   ViewNotes: {
@@ -15,7 +16,10 @@ const StackNavigator = createStackNavigator({
   HomeTodo: {
     screen: HomeTodo,
   },
-  initialRouteName: "ViewNotes",
+  LoginScreen: {
+    screen: LoginScreen,
+  },
+  initialRouteName: "HomeTodo",
   mode: "modal",
   headerShown: "false",
 });

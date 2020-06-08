@@ -46,7 +46,13 @@ function ViewNotes(props) {
             keyExtractor={(item) => item.id.toString()}
           />
         )}
-
+        <FAB
+          style={styles.fabLogin}
+          small
+          icon="login"
+          label="Aquele Loginzão tá ligado"
+          onPress={() => navigation.navigate("LoginScreen")}
+        />
         <FAB
           style={styles.fabright}
           small
@@ -80,6 +86,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+  },
+  fabLogin: {
+    backgroundColor: "blue",
+    position: "absolute",
+    margin: 10,
+    left: 0,
+    bottom: 80,
   },
   fab: { position: "absolute", margin: 10, right: 0, bottom: 10 },
   fabright: {
