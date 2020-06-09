@@ -46,19 +46,13 @@ function ViewNotes(props) {
             keyExtractor={(item) => item.id.toString()}
           />
         )}
-        <FAB
-          style={styles.fabLogin}
-          small
-          icon="login"
-          label="Aquele Loginzão tá ligado"
-          onPress={() => navigation.navigate("LoginScreen")}
-        />
+
         <FAB
           style={styles.fabright}
           small
           icon="circle"
-          label="Moraesinho"
-          onPress={() => navigation.navigate("HomeTodo")}
+          label="LoginPage"
+          onPress={() => navigation.navigate("LoginScreen")}
         />
         <FAB
           style={styles.fab}

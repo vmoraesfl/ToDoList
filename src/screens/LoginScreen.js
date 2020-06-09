@@ -5,7 +5,7 @@ import { Text, StyleSheet, View, FlatList } from "react-native";
 import TextView from "../component/TextView";
 import Button from "../component/Button";
 
-function LoginScreen() {
+function LoginScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <TextView style={styles.login} h1>

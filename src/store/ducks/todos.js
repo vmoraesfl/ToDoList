@@ -46,12 +46,7 @@ export const Creators = {
       description,
     },
   }),
-  /* addTodoDescription: (text) => ({
-    type: Types.DESCRIPTION,
-    payload: {
-      text,
-    },
-  }), */
+
   toggleTodo: (id) => ({
     type: Types.TOGGLE,
     payload: {

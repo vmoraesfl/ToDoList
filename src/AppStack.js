@@ -9,6 +9,7 @@ import { Button, Text, View } from "react-native";
 import axios from "axios";
 import ViewNotes from "./screens/ViewNotes";
 import AddNotes from "./screens/AddNotes";
+import LoginScreen from "./screens/LoginScreen";
 
 //axios.defaults.baseURL = 'http://127.0.0.1:8000';
 
@@ -79,6 +80,7 @@ export const AppStack = () => {
           }}
         >
           <Stack.Screen name="Dashboard" component={DashboardScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="ViewNotes" component={ViewNotes} />
           <Stack.Screen name="AddNotes" component={AddNotes} />
           <Stack.Screen name="Settings" component={SettingsScreen} />
